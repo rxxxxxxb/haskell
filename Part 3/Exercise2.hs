@@ -3,6 +3,7 @@ data SearchTree a = Empty
                 deriving(Show)    
 
 
+-- Insert an element in the right position of a tree                
 insert :: (a -> a -> Ordering) -> a -> SearchTree a -> SearchTree a                 
 insert _ val Empty = Branch Empty val Empty
 insert cmp val (Branch l n r) 
@@ -11,7 +12,7 @@ insert cmp val (Branch l n r)
             | otherwise     = Branch l n (insert cmp val r)
 
 
--- Check fo an element of an array
+-- Check for an element on a tree, Return True if found. 
 isElem :: (a -> a -> Ordering) -> a -> SearchTree a -> Bool
 isElem cmp x Empty = False
 isElem cmp x (Branch l n r)

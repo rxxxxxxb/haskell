@@ -9,7 +9,6 @@ count (Leaf x) = 1
 count (Branch l r)  = count l + count r
 
 
-
 -- similar to map on lists
 mapTree :: (a -> b) -> Tree a -> Tree b
 mapTree func (Leaf x)     = Leaf (func x)
@@ -23,10 +22,9 @@ treeToList (Branch l r) = (treeToList l) ++ (treeToList r)
 -- converts a list into a tree containing all values of the list;
 --  the tree can be completely unbalanced
 listToTree :: [a] -> Tree a            
-listToTree [] = error "Error"
-listToTree [x]  = (Leaf x)
-listToTree (x:xs) = Branch (Leaf x) (listToTree xs) 
-
+listToTree [] = error "error"
+listToTree [x] = Leaf x
+listToTree (x:xs) = Branch (Leaf x) (listToTree xs)
 
 
 
